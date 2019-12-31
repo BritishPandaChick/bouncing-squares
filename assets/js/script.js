@@ -10,7 +10,7 @@ window.onload = function(){
       canvas.width = W;
       canvas.height = H;
 
-      /* Box class */
+      /* ======= Box class ====== */
       function Box(_x,_y){
         //the X/Y position
         this.x = _x;
@@ -25,9 +25,9 @@ window.onload = function(){
         this.height = 20;
 
         //random colors for our box
-        this.r = Math.round(Math.random() * 255);
-        this.g = Math.round(Math.random() * 255);
-        this.b = Math.round(Math.random() * 255);
+        this.r = Math.round(Math.random()*255);
+        this.g = Math.round(Math.random()*255);
+        this.b = Math.round(Math.random()*255);
 
         this.rgba = "rgba(" + this.r + "," + this.g + "," + this.b + ",1)";
 
@@ -43,8 +43,9 @@ window.onload = function(){
         //function that handle our logics for our box
         this.update = function(){
 
-          /* check if the ball get out of our screen when it does that, make it bounce */
-          //check the left border
+          /* check if the ball get out of our screen when it does that, make it
+          bounce */
+          //check the left window border
           if(this.x < 0){
             this.x = 0; //set its position to 0
             this.xVel *= -1; //make it bounce
@@ -62,7 +63,8 @@ window.onload = function(){
             this.yVel *= -1; //make it bounce
           }
 
-          /* boxes don't try to add y by its velocity when it reaches bottom causing it to spazz */
+          /* boxes don't try to add y by its velocity when it reaches bottom
+          causing it to spazz */
           //now we add gravity
           if(this.y < H - this.height) {
             this.yVel += .25;
@@ -90,7 +92,7 @@ window.onload = function(){
       function draw(){
         //background
         ctx.globalCompositeOperation = "source-over";
-        ctx.fillStyle = "rgba(0, 0, 0, 0.5)";
+        ctx.fillStyle = "rgba(0,0,0,0.5)";
         ctx.fillRect(0,0,W,H);
 
         ctx.globalCompositeOperation = "lighter";
